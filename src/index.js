@@ -74,6 +74,9 @@ export default class Swipeable extends PureComponent {
     onRef: PropTypes.func,
     onPanAnimatedValueRef: PropTypes.func,
     swipeStartMinDistance: PropTypes.number,
+    
+    // layout
+    layoutWidth: PropTypes.any,
 
     // styles
     style: ViewPropTypes.style,
@@ -147,6 +150,9 @@ export default class Swipeable extends PureComponent {
       duration: 250,
       easing: Easing.elastic(0.5)
     },
+    
+    // layout
+    layoutWidth: null,
 
     // misc
     onRef: noop,
