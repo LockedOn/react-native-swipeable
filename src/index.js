@@ -542,7 +542,7 @@ export default class Swipeable extends PureComponent {
       return {
         ...swipeReleaseAnimationConfig,
         toValue: {
-          x: leftButtons.length * leftButtonWidth,
+          x: this.state.width,
           y: 0
         },
         ...leftButtonsOpenReleaseAnimationConfig
