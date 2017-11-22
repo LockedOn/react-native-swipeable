@@ -74,7 +74,7 @@ export default class Swipeable extends PureComponent {
     onRef: PropTypes.func,
     onPanAnimatedValueRef: PropTypes.func,
     swipeStartMinDistance: PropTypes.number,
-    
+
     // layout
     layoutWidth: PropTypes.any,
 
@@ -150,7 +150,7 @@ export default class Swipeable extends PureComponent {
       duration: 250,
       easing: Easing.elastic(0.5)
     },
-    
+
     // layout
     layoutWidth: null,
 
@@ -433,7 +433,13 @@ export default class Swipeable extends PureComponent {
     onPanResponderTerminationRequest: this._handlePanResponderEnd
   });
 
-  _handleLayout = ({nativeEvent: {layout: {width}}}) => this.setState({width});
+  _handleLayout = ({nativeEvent: {layout: {width}}}) => {
+    const { layoutWidth } = this.props;
+    if (this.props.layoutWidth) {
+      return this.setState({ width: layoutWidth });
+    }
+    return this.setState({ width });
+  };
 
   _canSwipeRight() {
     return this.props.leftContent || this._hasLeftButtons();
